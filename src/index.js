@@ -36,6 +36,8 @@ var score2 = 0;
 let keys = {};
 let tekst1;
 let tekst2;
+var scoretekst1;
+var scoretekst2;
 
 
 function preload(){
@@ -79,6 +81,14 @@ function create(){
     this.physics.add.collider(ball,speler1)
     this.physics.add.collider(ball,speler2)
 
+    scoretekst1= this.add.text(
+        speler1.body.width,0,'punten: 0'
+    );
+
+    scoretekst2= this.add.text(
+        speler2.body.x - 100,0,'punten: 0'
+    )
+
     tekst1= this.add.text(
         400,400,'speler 1 wint'
     );
@@ -116,14 +126,15 @@ function update(){
     if(speler1goal){
         score1++ ;
         speler1goal = false;
-        console.log(score1,' / ',score2);
+        scoretekst1.setText('punten: ' + score1);
         
     };
 
     if(speler2goal){
         score2++;
         speler2goal = false;
-        console.log(score1,' / ',score2);
+      
+        scoretekst2.setText('punten: ' + score2);
         
     };
 
